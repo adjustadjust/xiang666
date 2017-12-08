@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>let修饰符</title>
+        <style>
+           *{margin:0;padding:0;}
+        </style>
+    </head>
+    <body>
+	<script>
+        /*
+           let修饰符特点：
+           1.let用法类似var，但存在块级作用域
+           2.不能重复定义(暂时性死区)
+           3.不存在变量提升(即：变量必须先声明在使用，否则报错)
+           4.用let声明的变量虽然不能重新定义，但是可以改变值
+           const 常量特点：
+           1.let用法类似var，但存在块级作用域
+           2.不能重复定义(暂时性死区)
+           3.不存在变量提升(即：变量必须先声明在使用，否则报错)
+         */
+         /* var a =20;
+          console.log(a);//20
+          let a=30;
+       /*   console.log(a);//error*/
+         /* {
+          	var a=20;
+          }
+          console.log(a);*///20*/
+         /* {
+          	let a=30;
+          	//console.log(a);//30在块级作用域里是可以访问到的
+          }
+          console.log(a);//errer*/
+          /*alert(a);
+          var a=10;//undefined*/
+         /* alert(a);//error
+          let a=10;*/
+          /*let a=666;
+          console.log(a);
+          a=888;
+          console.log(a);*/
+          //const常量存在块级作用域
+          /*{
+         	const a=10; 
+          console.log(a);//10
+          }
+          console.log(a);//a is not defined*/
+          //const常量不存在变量提升
+          //console.log(a);//a is not defined
+         /* const a=99;
+          console.log(a);*/
+          //const常量存在暂时死区，不能重新定义，也不能重新改值
+          //const a=9;
+         // const a=10;//a has decleared
+         //a=10;//也不能改值，因为他是const，当然这也是和let区别之一
+        /* const a=[];
+         a[0]="郑文祥";
+         console.log(a);//*/
+         //没有改变该数组的内存地址，只是给数组元素赋值，所以
+         //不会报错
+         /*
+          数组解构：
+          1.完全解构
+          2.不完全解构
+
+          /*
+                       let[a,b,c]=[1,2,3];
+                       console.log(a,b,c);//完全解构，每一项相对应
+           */
+          /* let[a,b,c]=[1,2];
+           console.log(a,b,c);*///1,2,undefined,不完全解构：每一项相对应，匹配不上的元素被赋值为undefined
+           /* let [a,b,c]="str";
+            console.log(a,b,c);//s t r*/
+            //let [a,b,c]=undefined;//不能设置为null/undefined
+            /*
+                 对象解构：
+                 1.完全解构
+                 2.不完全解构
+             */
+            /*let {name,age}={name:"郑文祥",age:22}
+            console.log(name,age);//郑文祥 22完全解构*/
+            /*let {name,age}={name:"郑文祥"}
+            console.log(name,age);//不完全解构：郑文祥，22
+            //对象解析本质
+            let {name:name,age:age}={name:"郑文祥",age:"22"}
+            //在这个过程中，"郑文祥"赋给了第二个name,第二个才是变量
+            //let {name:name,age:age}等同于let {name,age},实际上是省略了第一个name,和age
+            //for example*/
+             /*let {name:name,age:age}={name:"郑文祥",age:"22"}
+             console.log(name,age);*///郑文祥 22
+            /* let {name:foo,age:bar}={name:"郑文祥",age:"22"}
+             console.log(name,age);//报错，找不到age和name*/
+             /*let {name:foo,age:bar}={name:"郑文祥",age:"22"}
+             console.log(foo,bar);//正确，恰好说明了第二个才是变量*/
+             //数组默认值学习
+            /* let [a,b,c]=[];
+             console.log(a,b,c);*///undefined,undefined,undefined
+            /* let [a,b,c]=[undefined,undefined,undefined];
+             console.log(a,b,c);//undefined,undefined,undefined*/
+             /*let[a,b,c]=[null,null,null];
+             console.log(a,b,c);//null,null,null*/
+             //let [a="二狗",b="三狗",c="四狗"]=[1,2];
+             //console.log(a,b,c);//1,2,三狗
+             //let [a="二狗",b="三狗",c="四狗"]=[1,2,undefined];
+            //console.log(a,b,c);//1,2,三狗
+            let [a="二狗",b="三狗",c="四狗"]=[1,2,null];
+            console.log(a,b,c);
+	</script>
+    </body>
+</html>
